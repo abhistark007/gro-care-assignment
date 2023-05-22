@@ -5,7 +5,7 @@ import UserInfo from './UserInfo'
 
 function AdsBannerAndUserInfo() {
   return (
-    <div className='flex'>
+    <div className='flex gap-5'>
         <AdsBanner image={adsBannerImage}/>
         <UserInfo/>
     </div>
