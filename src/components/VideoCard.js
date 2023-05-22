@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 function VideoCard({thumbnail,title,creatorName,reactionCount,creatorPic,liked,mediaUrl}) {
   
   return (
-    <Link to={`/videoplayer/${mediaUrl.substring(mediaUrl.lastIndexOf("/")+1)}`}>
+    <Link to={{
+      pathname:`/videoplayer/${mediaUrl.substring(mediaUrl.lastIndexOf("/")+1)}`
+    }}>
       <div className='flex flex-col gap-4 w-[15rem] rounded-[2rem] border-2 bg-[#15141B] border-purple-500 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] duration-200 hover:z-20 hover:scale-110 cursor-pointer'>
         <img src={thumbnail} alt={title} className='  rounded-t-[2rem] w-[15rem] '/>
         <div className='flex gap-2 px-2 py-2'>

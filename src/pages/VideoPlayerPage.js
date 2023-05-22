@@ -48,7 +48,7 @@ function VideoPlayerPage() {
 
 
   
-  
+
 
   const videoUrl = `https://cdn.gro.care/${mediaurl}`
   console.log(videoUrl);
