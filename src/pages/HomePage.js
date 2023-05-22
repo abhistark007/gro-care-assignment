@@ -1,5 +1,6 @@
 import React from 'react'
 import LeftSideBar from '../components/LeftSideBar'
+import RightSideBar from '../components/RightSideBar'
 
 
 
@@ -13,9 +14,10 @@ function HomePage() {
 
 
         {/* Right Side */}
-        <div className='flex-[0.8] flex flex-col'>
+        <RightSideBar/>
 
-        </div>
+
+
     </div>
   )
 }
