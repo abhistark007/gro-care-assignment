@@ -7,7 +7,7 @@ import RightSideBar from '../components/RightSideBar'
 
 function HomePage() {
   return (
-    <div className='flex min-h-screen bg-[#15141B]'>
+    <div className='flex min-h-screen bg-[#15141B] pb-20'>
         {/* Left Side */}
         <LeftSideBar/>
 
