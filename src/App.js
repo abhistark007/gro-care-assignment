@@ -12,7 +12,7 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/videoplayer/:id'element={<VideoPlayerPage/>}/>
+        <Route path='/videoplayer/:mediaUrl'element={<VideoPlayerPage/>}/>
       </Routes>
       <Toaster/>
     </div>
