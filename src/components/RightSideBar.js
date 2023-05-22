@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AdsBannerAndUserInfo from './AdsBannerAndUserInfo'
 import VideoDisplaySection from './VideoDisplaySection'
 import './RightSideBar.css'
@@ -15,7 +15,7 @@ function RightSideBar() {
       .then((response)=>response.json())
       .then((result)=> {
         if(result.message==="Success"){
-          setPosts(result.data.posts);
+          setPosts(result.data.posts); 
           console.log(result.data.posts);
         }else{
           setPosts([]);
@@ -28,6 +28,12 @@ function RightSideBar() {
     setLoading(false);
   }
 
+  useEffect(()=>{
+    getPosts();
+
+    
+  },[])
+
 
   return (
     <div className='flex-[0.8] flex flex-col px-5 gap-5'>
@@ -35,7 +41,7 @@ function RightSideBar() {
         {
           (loading===true)?
           (<div className='flex justify-center items-center'>
-            <div class="custom-loader"></div>
+            <div className="custom-loader"></div>
           </div>)
           :(posts.length===0?(<div className='flex justify-center items-center text-white text-3xl'>No Posts Found :|</div>)
           :(<VideoDisplaySection posts={posts}/>))
