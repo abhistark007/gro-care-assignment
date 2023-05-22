@@ -4,6 +4,7 @@ import './App.css';
 import HomePage from './pages/HomePage';
 import VideoPlayerPage from './pages/VideoPlayerPage';
 import NavBar from './components/NavBar';
+import {Toaster} from 'react-hot-toast';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/videoplayer/:id'element={<VideoPlayerPage/>}/>
       </Routes>
+      <Toaster/>
     </div>
   );
 }
