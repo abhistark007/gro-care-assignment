@@ -1,13 +1,18 @@
 import React from 'react'
 import LeftSideBar from '../components/LeftSideBar'
 import RightSideBar from '../components/RightSideBar'
+import { motion } from 'framer-motion' 
 
 
 
 
 function HomePage() {
   return (
-    <div className='flex min-h-screen bg-[#15141B] pb-20'>
+    <motion.div 
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      exit={{opacity:0}}
+    className='flex min-h-screen bg-[#15141B] pb-20'>
         {/* Left Side */}
         <LeftSideBar/>
 
@@ -18,7 +23,7 @@ function HomePage() {
 
 
 
-    </div>
+    </motion.div>
   )
 }
 
