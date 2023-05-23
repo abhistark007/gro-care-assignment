@@ -6,6 +6,10 @@ import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp';
 import PlayCircleOutlineSharpIcon from '@mui/icons-material/PlayCircleOutlineSharp';
 import PauseCircleOutlineSharpIcon from '@mui/icons-material/PauseCircleOutlineSharp';
 import './VideoPlayerPage.css'
+import NoImageAvailable from '../assets/No_image_available.svg'
+import { Avatar } from '@mui/material';
+import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
+import FavoriteSharpIcon from '@mui/icons-material/FavoriteSharp';
 
 function VideoPlayerPage() {
   const { mediaurl } = useParams();
@@ -42,7 +46,7 @@ function VideoPlayerPage() {
         setProgress(playerRef.current.getCurrentTime() / playerRef.current.getDuration());
       }
     }, 1000);
-  
+    setLiked(post.reaction.voted??false);
     return () => clearInterval(interval);
   }, []);
 
@@ -50,16 +54,27 @@ function VideoPlayerPage() {
   
   const location = useLocation();
   const post = location.state;
-  console.log(post);
+  // console.log(post);
+  // Extracting Data from post and handling null value
+  const title=post.submission.title??"Not Available";
+  
+  const description =post.submission.description??"Not Available";
+  
+  const creatorName=post.creator.name??"Not Available";
+  const creatorHandle=post.creator.handle??"Not Available";
+  const creatorPic=post.creator.pic??NoImageAvailable;
+  const reactionCount=post.reaction.count??"0";
+  const [liked,setLiked]=useState(false);
+  
+
 
   const videoUrl = `https://cdn.gro.care/${mediaurl}`
-  console.log(videoUrl);
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className='h-screen bg-[#15141B] flex flex-col gap-10'>
+      className='min-h-screen bg-[#15141B] flex flex-col gap-10 pb-20'>
       <button onClick={() => navigate(-1)} className='flex text-white text-2xl items-center bg-purple-500 rounded-xl py-2 px-4 w-fit'>
         <ArrowBackSharpIcon />
         <p>Go back</p>
@@ -87,8 +102,27 @@ function VideoPlayerPage() {
         </div>
         </div>
         
-        <div className='flex flex-col flex-[0.5] bg-[#1F1E24] rounded-r-2xl text-white'>
-          dsds
+        <div className='flex flex-col flex-[0.5] bg-[#1F1E24] rounded-r-2xl text-white py-4 px-3 gap-4 overflow-y-scroll'>
+          <p className='text-3xl'>{title}</p>
+          <hr className='h-2  bg-purple-600'/>
+          <div className='flex flex-wrap gap-5 items-center'>
+            <Avatar src={creatorPic}/>
+            <div className='flex flex-col'>
+            <p>{creatorName}</p>
+            <p className='text-blue-500'>{creatorHandle}</p>
+            </div>
+          </div>
+          <div className='flex gap-10'>
+            <p>{reactionCount} Reactions</p>
+            <p className='cursor-pointer'>
+            {
+                        liked===true?<p className='text-red-600 duration-200' onClick={()=>setLiked(like=>!like)}><FavoriteSharpIcon/></p>:<p className='text-white duration-200'  onClick={()=>setLiked(like=>!like)}><FavoriteBorderSharpIcon/></p>
+            }
+            </p>
+          </div>
+          <p className='text-2xl'>{description}</p>
+
+
         </div>
       </div>
 
