@@ -19,6 +19,7 @@ function VideoDisplaySection({posts}) {
             reactionCount={post.reaction.count??0}
             liked={post.reaction.voted??false}
             mediaUrl={post.submission.mediaUrl}
+            post={post}
             />
           })
         }
