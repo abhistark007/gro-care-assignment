@@ -41,6 +41,7 @@ function VideoPlayerPage() {
 
 
   useEffect(() => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     const interval = setInterval(() => {
       if (playerRef.current) {
         setProgress(playerRef.current.getCurrentTime() / playerRef.current.getDuration());
