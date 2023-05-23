@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# GroCare Assignment App
 
 Live website link => https://grocare-assignment.web.app  
 
