@@ -10,9 +10,11 @@ function RightSideBar() {
   const [posts,setPosts]=useState([]);
 
   const nextPage=()=>{
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
       setPage(page=>page+1);
   }
   const prevPage=()=>{
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     if(page===0){
       toast.success("First Page Reached");
       return;
