@@ -76,7 +76,10 @@ function VideoPlayerPage() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className='min-h-screen bg-[#15141B] flex flex-col gap-10 pb-20'>
-      <button onClick={() => navigate(-1)} className='flex text-white text-2xl items-center bg-purple-500 rounded-xl py-2 px-4 w-fit'>
+      <button onClick={() => {
+        togglePlay();
+        navigate(-1);
+      }} className='flex text-white text-2xl items-center bg-purple-500 rounded-xl py-2 px-4 w-fit'>
         <ArrowBackSharpIcon />
         <p>Go back</p>
       </button>
